@@ -1,0 +1,26 @@
+<div>
+  <form #form=ngForm>
+    <div [hidden]="isValid" class="text-danger">
+      Login failed. Check your employee id and password.
+    </div>
+    <div class="form-group" >
+      <label for="employeeId">Employee ID:</label>
+      <input type="text" class="form-control" required
+             id="employeeId" placeholder="Enter employee Id"
+             [(ngModel)]="employeeId" name="employeeId" #employeeIdInput>
+      <div [hidden]="!employeeIdInput.valid || employeeIdInput.pristine" class="text-danger">
+        Employee ID must be entered
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" required
+             id="password" placeholder="Password" #passwordInput
+             [(ngModel)]="password" name="password">
+      <div [hidden]="!passwordInput.valid || passwordInput.pristine" class="text-danger">
+        Password must be entered
+      </div>
+    </div>
+    <button [disabled]="!form.valid || isBusy" (click)="login()" class="btn btn-primary">Login</button>
+  </form>
+</div>

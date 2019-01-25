@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SoComWebS';
+  showlogin: boolean;
+
+  login(input: boolean) {
+    if (input) {
+      console.log('login success');
+      this.showlogin = true;
+    } else {
+      console.log('login failed');
+      this.showlogin = false;
+    }
+  }
+
+  printBar(input: string) {
+    console.log(input);
+  }
 }
+
+

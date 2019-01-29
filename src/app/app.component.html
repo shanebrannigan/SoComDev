@@ -10,13 +10,17 @@
   ></app-home-login>
   </div>
 
-  <div *ngIf = "loggedIn">
+  <div *ngIf = "(loggedIn && !displayEvents)">
     <!-- here we display everything for the user, we can display additional compoents if AdminLoggedIn( -->
 
-  <app-home-event-display></app-home-event-display>
+
+  <app-home-event-display (displayAllEvents)=tryDisplayEvents($event)>  </app-home-event-display>
+
 
   </div>
-
+  <div *ngIf = "displayEvents">
+    displaying events temp holder for previous events component
+  </div>
   <div>
     <app-home-footer></app-home-footer>
 </div>

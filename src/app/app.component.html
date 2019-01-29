@@ -9,14 +9,11 @@
   <app-home-login (loginAttempted)=login($event)
                   (foo)=printBar($event)
   ></app-home-login>
-
   </div>
 
   <div *ngIf = "showlogin">
-
-<app-home-event-display></app-home-event-display>
-
-</div>
+  <app-home-event-display></app-home-event-display>
+  </div>
 
 </div>
 

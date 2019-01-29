@@ -6,15 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'SoComWebS';
+  title = 'Social Committee Event Website';
   showlogin: boolean;
 
   login(input: boolean) {
     if (input) {
-      console.log('login success');
       this.showlogin = true;
     } else {
-      console.log('login failed');
       this.showlogin = false;
     }
   }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home-event-display',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeEventDisplayComponent implements OnInit {
 
-  constructor() { }
+  events: Event[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

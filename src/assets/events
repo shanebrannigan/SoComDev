@@ -1,0 +1,10 @@
+[
+  {
+    "img": "Image",
+    "title":"Event 1",
+    "info": "It'a an event",
+    "locale": "locale",
+    "date": "Sunday",
+    "guestFee": 25
+  }
+]

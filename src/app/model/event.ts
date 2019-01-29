@@ -6,6 +6,7 @@ export class Event {
   locale: string;
   date: string;
   guestFee: number;
+
   static fromJson(obj: any): Event {
     const result = new Event();
     result.img = obj.img;

@@ -6,6 +6,8 @@ import { HomeLoginComponent } from './home-login/home-login.component';
 import { HomeSignupComponent } from './home-signup/home-signup.component';
 import { HomeEventDisplayComponent } from './home-event-display/home-event-display.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EventSignupComponent} from './event-signup/event-signup.component';
+import {AdminEventCreateComponent} from './admin-event-create/admin-event-create.component';
 
 
 @NgModule({

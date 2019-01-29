@@ -1,13 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
+<div style="text-align:center; padding-top: 15%">
+  <h1 style="padding-bottom: 3%" >
     Welcome to {{ title }}!
   </h1>
 <!-- needs output event to say login success-->
 
   <div *ngIf = "!loggedIn">
-  <app-home-login (loginAttempted)=login($event)
-  ></app-home-login>
+  <app-home-login (loginAttempted)=login($event)></app-home-login>
   </div>
 
   <div *ngIf = "loggedIn">

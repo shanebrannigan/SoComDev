@@ -21,7 +21,9 @@ export class EventServiceHttp extends EventService {
 
   }
 
-  createNewEvent(){}
+  createNewEvent(event: Event) {
+    return true;
+  }
 
   getEvent() {
     return this.event;

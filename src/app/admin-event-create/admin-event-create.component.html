@@ -1,0 +1,37 @@
+<form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+  <span *ngIf="(!eventCreated==true)">
+  <label>
+    Image:
+    <input type="url" formControlName="img" required>
+
+  </label>
+  <label>
+    Title:
+    <input type="text" formControlName="title" required>
+  </label>
+  <label>
+    Info:
+    <input type="text" formControlName="info" required>
+
+  </label>
+  <label>
+    Locale:
+    <input type="text" formControlName="locale" required>
+  </label>
+  <label>
+    Date:
+    <input type="date" formControlName="date" required>
+
+  </label>
+  <label>
+    Guest Fee: $
+    <input type="number" formControlName="guestFee" required>
+  </label>
+  <button type="submit" [disabled]="!createEventForm.valid">Submit Event</button>
+
+
+  </span>
+  <span *ngIf="(eventCreated==true)">
+    Event created!
+  </span>
+</form>

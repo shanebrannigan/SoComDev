@@ -12,29 +12,25 @@ import {LoginServiceHttp} from '../services/login-service-http';
   providers: [LoginServiceHttp]
 })
 export class HomeLoginComponent implements OnInit {
-  user: string;
-  pass: string;
-
   @Input() login: Login = new Login();
-
-  bar = 'bar';
   @Output() loginAttempted = new EventEmitter<boolean>();
   @Output() foo = new EventEmitter<string>();
   @Output() loginSuccess = false;
+  loginFailed = false;
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
-
-
   constructor(private fb: FormBuilder, private loginService: LoginServiceHttp) { }
   ngOnInit() {
   }
 
-  tryLogin(): void {
-    this.loginSuccess = true;
-    this.loginAttempted.emit(this.loginSuccess);
-    this.foo.emit(this.bar);
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
   onSubmit() {
     // take our form values, set them to the login object
@@ -44,7 +40,8 @@ export class HomeLoginComponent implements OnInit {
     if (this.loginService.login(this.login))  {
       this.loginSuccess = true;
       this.loginAttempted.emit(this.loginSuccess);
-      this.foo.emit(this.bar);
     }
+    this.loginFailed = true;
+
   }
 }

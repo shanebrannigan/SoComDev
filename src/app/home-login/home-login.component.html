@@ -1,13 +1,18 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" xmlns="">
 
   <label>
     Username:
     <input type="text" formControlName="username" required>
-  </label>
 
+  </label>
   <label>
     Password:
     <input type="password" formControlName="password" required>
   </label>
   <button type="submit" [disabled]="!loginForm.valid">Login</button>
+
+  <span *ngIf="(loginFailed==true)">
+   Login Failed. Please retry.
+  </span>
+
 </form>

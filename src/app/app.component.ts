@@ -7,18 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Social Committee Event Website';
-  showlogin: boolean;
+  loggedIn: boolean;
 
   login(input: boolean) {
     if (input) {
-      this.showlogin = true;
+      this.loggedIn = true;
     } else {
-      this.showlogin = false;
+      this.loggedIn = false;
     }
-  }
-
-  printBar(input: string) {
-    console.log(input);
   }
 }
 

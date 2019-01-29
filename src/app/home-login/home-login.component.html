@@ -1,24 +1,37 @@
-<form>
-  <div class="imgcontainer">
+<!--<form>-->
+  <!--<div class="imgcontainer">-->
 
-  </div>
+  <!--</div>-->
 
-  <div class="container">
-    <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="user" [(ngModel)] ="user"/>
+  <!--<div class="container">-->
+    <!--<label><b>Username</b></label>-->
+    <!--<input type="text" placeholder="Enter Username" name="user" [(ngModel)] ="user"/>-->
 
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" [(ngModel)] = "pass"/>
+    <!--<label><b>Password</b></label>-->
+    <!--<input type="password" placeholder="Enter Password" name="pass" [(ngModel)] = "pass"/>-->
 
-    <button type="button" (click)="tryLogin()">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+    <!--<button type="button" (click)="tryLogin()">Login</button>-->
+    <!--<label>-->
+      <!--<input type="checkbox" checked="checked" name="remember"> Remember me-->
+    <!--</label>-->
+  <!--</div>-->
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
+  <!--<div class="container" style="background-color:#f1f1f1">-->
+    <!--<button type="button" class="cancelbtn">Cancel</button>-->
+    <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
+  <!--</div>-->
+<!--</form>-->
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    Username:
+    <input type="text" formControlName="username" required>
+  </label>
+
+  <label>
+    Password:
+    <input type="password" formControlName="password" required>
+  </label>
+  <button type="submit" [disabled]="!loginForm.valid">Login</button>
 </form>
-

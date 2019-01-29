@@ -13,12 +13,15 @@ export class LoginServiceHttp extends LoginService {
   }
 
   login(login: Login) {
+    console.log('attempting login');
+    console.log(login.name);
     if (login.name === useracc.name && login.pass === useracc.pass) {
       console.log('login successful');
       return true;
     } else {
-      return false;
       console.log('login failed');
+      return false;
+
     }
   }
 

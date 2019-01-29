@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeLoginComponent } from './home-login/home-login.component';
 import { HomeSignupComponent } from './home-signup/home-signup.component';
 import { HomeEventDisplayComponent } from './home-event-display/home-event-display.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

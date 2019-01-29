@@ -6,18 +6,23 @@
 <!-- needs output event to say login success-->
 
   <div *ngIf = "!loggedIn">
-    <app-home-login (loginAttempted)=login($event)
-    ></app-home-login>
+  <app-home-login (loginAttempted)=login($event)
+  ></app-home-login>
   </div>
 
   <div *ngIf = "loggedIn">
-    <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
-    <app-home-event-display></app-home-event-display>
+    <!-- here we display everything for the user, we can display additional compoents if AdminLoggedIn( -->
+  <app-home-event-display></app-home-event-display>
 
   </div>
 
   <div>
     <app-event-signup></app-event-signup>
   </div>
+
+  <div>
+    <app-home-footer></app-home-footer>
+  </div>
+
 </div>
 

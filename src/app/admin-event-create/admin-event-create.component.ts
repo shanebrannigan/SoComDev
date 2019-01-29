@@ -31,7 +31,6 @@ export class AdminEventCreateComponent implements OnInit {
   onSubmit() {
     if (this.eventService.createNewEvent(this.event)) {
      this.eventCreated = true;
-
     }
   }
 }

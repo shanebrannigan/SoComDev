@@ -20,6 +20,7 @@ export class AppComponent {
       this.loggedIn = false;
     }
   }
+
   tryDisplayEvents(input: boolean) {
     if (input) {
       this.displayEvents = true;
@@ -27,17 +28,26 @@ export class AppComponent {
       this.displayEvents = false;
     }
   }
+
   logUsername(input: string) {
     this.username = input;
 
   }
+
   checkAdmin(input: boolean) {
     this.isAdmin = input;
   }
+
   iWantToGoMethod(input: boolean) {
     console.log('In here');
     if (input) {
       this.iWantToGo = true;
+    }
+  }
+
+  cancelSignUpForm(input: boolean) {
+    if (input) {
+      this.iWantToGo = false;
     }
   }
 }

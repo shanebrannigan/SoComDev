@@ -11,8 +11,11 @@ import {Event} from '../model/event';
   providers: [EventServiceHttp]
 })
 export class HomeEventDisplayComponent implements OnInit {
-  @Output () displayAllEvents = new EventEmitter<boolean>();
+  @Output() showEventSignUpForm = new EventEmitter<boolean>();
+  @Output() showSignUp = false;
+
   eventToDisplay: Event;
+
   constructor(private eventService: EventServiceHttp) {
   }
 
@@ -21,7 +24,10 @@ export class HomeEventDisplayComponent implements OnInit {
     this.eventToDisplay = this.eventService.getEvent();
   }
 
-  showPreviousEvents() {
-    this.displayAllEvents.emit(true);
+  onClickIWantToGo() {
+    console.log('show events!');
+    this.showSignUp = true;
+    console.log(this.showSignUp);
+    this.showEventSignUpForm.emit(this.showSignUp);
   }
 }

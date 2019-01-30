@@ -17,8 +17,12 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
     HomeEventDisplayComponent,
     AdminEventCreateComponent,
     EventSignupComponent,
-    HomeFooterComponent
+    HomeFooterComponent,
+
   ],
+  entryComponents: [
+    AppComponent, ],
+
   imports: [
     BrowserModule,
     FormsModule,

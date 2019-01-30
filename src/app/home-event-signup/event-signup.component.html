@@ -1,6 +1,7 @@
 <br><br>
 <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
-  <table>
+  <table align = 'center'>
+    <span class="fa fa-times-circle" (click)="clearSelected()"></span>
     <tr>
       <td>Do you wish to attend the event?</td>
       <td>
@@ -32,6 +33,7 @@
     </div>
 
     <button type="submit"[disabled]="!signUpForm.valid">Submit</button>
+    <button type="cancel">Cancel</button>
   </table>
 </form>
 

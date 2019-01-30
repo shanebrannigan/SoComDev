@@ -14,6 +14,12 @@
   -o-transition-duration: 0.5s;
 }
 
+
+.adminSettings{
+  width:100%;
+  height:90%;
+  background:darkorange;
+}
 /*
     Multicoloured Hover Variations
 */

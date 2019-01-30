@@ -16,6 +16,7 @@ export class HomeLoginComponent implements OnInit {
   @Output() loginAttempted = new EventEmitter<boolean>();
   @Output() uname = new EventEmitter<string>();
   @Output() loginSuccess = false;
+  @Output() isAdmin = new EventEmitter<boolean>();
   loginFailed = false;
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -41,6 +42,11 @@ export class HomeLoginComponent implements OnInit {
       this.loginSuccess = true;
       this.loginAttempted.emit(this.loginSuccess);
       this.uname.emit(this.loginForm.get('username').value);
+    }
+    if (this.loginService.checkAdmin(this.login.name)) {
+      this.isAdmin.emit(true);
+    } else {
+      this.isAdmin.emit(false);
     }
     this.loginFailed = true;
 

@@ -3,6 +3,26 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
+<div *ngIf = "displayAdminTools">
+  <button type="button"(click)=unlockAdmin() >Admin Settings</button>
+  <div *ngIf = "displaySettings">
+    <button type="button"(click)=showCreateEvent() >Create Event</button>
+    <button type="button"(click)=showEditCurrentEvent() >Edit Current Event</button>
+    <button type="button"(click)=showExportEventAttendance() >Export Event Attendence</button>
+    <div *ngIf = "createEvent">
+    <app-admin-event-create></app-admin-event-create>
+    </div>
+    <div *ngIf = "editEvent">
+    <app-admin-event-edit></app-admin-event-edit>
+    </div>
+    <div *ngIf = "eventAttendance">
+    <app-admin-event-attendance></app-admin-event-attendance>
+    </div>
+  </div>
+<!-- display admin tool components -->
+</div>
+
 <!-- Social Footer, Colour Matching Icons -->
 <!-- Include Font Awesome Stylesheet in Header -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,3 +37,5 @@
   </div>
   <hr>
 </div>
+
+

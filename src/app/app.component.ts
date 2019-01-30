@@ -10,6 +10,7 @@ export class AppComponent {
   loggedIn: boolean;
   displayEvents: boolean;
   username = '';
+  isAdmin: boolean;
   iWantToGo: boolean;
 
   login(input: boolean) {
@@ -28,6 +29,10 @@ export class AppComponent {
   }
   logUsername(input: string) {
     this.username = input;
+
+  }
+  checkAdmin(input: boolean) {
+    this.isAdmin = input;
   }
   iWantToGoMethod(input: boolean) {
     console.log('In here');

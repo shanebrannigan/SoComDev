@@ -8,6 +8,7 @@
   <div *ngIf = "!loggedIn">
   <app-home-login (loginAttempted)=login($event)
                   (uname)=logUsername($event)
+                  (isAdmin)=checkAdmin($event)
   ></app-home-login>
   </div>
 
@@ -26,13 +27,14 @@
 
   </div>
 
-  <div *ngIf = "loggedIn">
+  <div *ngIf = "iWantToGo">
     <app-event-signup></app-event-signup>
   </div>
 
-  <div>
-    <app-home-footer></app-home-footer>
+<div>
+    <app-home-footer
+      [displayAdminTools]="isAdmin"
+      [uname]="username" ></app-home-footer>
 </div>
-
 </div>
 

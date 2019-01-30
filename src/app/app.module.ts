@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminEventCreateComponent } from './admin-event-create/admin-event-create.component';
 import {EventSignupComponent} from './home-event-signup/event-signup.component';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
+import { AdminEventAttendanceComponent } from './admin-event-attendance/admin-event-attendance.component';
+import { AdminEventEditComponent } from './admin-event-edit/admin-event-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
     HomeEventDisplayComponent,
     AdminEventCreateComponent,
     EventSignupComponent,
-    HomeFooterComponent
+    HomeFooterComponent,
+    AdminEventAttendanceComponent,
+    AdminEventEditComponent
   ],
   imports: [
     BrowserModule,

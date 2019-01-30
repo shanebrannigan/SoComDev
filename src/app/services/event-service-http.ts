@@ -17,12 +17,23 @@ export class EventServiceHttp extends EventService {
     this.event.guestFee = 123;
   }
 
-  createNewEvent(event: Event) {
-    return true;
-  }
+
 
   getEvent() {
     return this.event;
+  }
+
+  adminCreateEvent(event: Event) {
+    return true;
+  }
+
+  adminEditCurrentEvent(event: Event) {
+    this.event = event;
+    return true;
+  }
+
+  adminExportAttendenceCurrentEvent(event: Event) {
+    return true;
   }
 }
 

@@ -11,23 +11,19 @@ import {Event} from '../model/event';
   providers: [EventServiceHttp]
 })
 export class HomeEventDisplayComponent implements OnInit {
-  @Output() showEventSignUpForm = new EventEmitter<boolean>();
-  @Output() showSignUp = false;
-
+  @Input() uname: string;
+  @Output () displayAllEvents = new EventEmitter<boolean>();
   eventToDisplay: Event;
-
   constructor(private eventService: EventServiceHttp) {
   }
 
   ngOnInit() {
     // get the events, display them
     this.eventToDisplay = this.eventService.getEvent();
+    console.log(this.uname);
   }
 
-  onClickIWantToGo() {
-    console.log('show events!');
-    this.showSignUp = true;
-    console.log(this.showSignUp);
-    this.showEventSignUpForm.emit(this.showSignUp);
+  showPreviousEvents() {
+    this.displayAllEvents.emit(true);
   }
 }

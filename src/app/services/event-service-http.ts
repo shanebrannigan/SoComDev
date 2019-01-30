@@ -15,10 +15,6 @@ export class EventServiceHttp extends EventService {
     this.event.locale = 'Belfast';
     this.event.date = '11/01/20';
     this.event.guestFee = 123;
-
-
-
-
   }
 
   createNewEvent(event: Event) {

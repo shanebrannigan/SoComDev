@@ -14,7 +14,7 @@ import {LoginServiceHttp} from '../services/login-service-http';
 export class HomeLoginComponent implements OnInit {
   @Input() login: Login = new Login();
   @Output() loginAttempted = new EventEmitter<boolean>();
-  @Output() foo = new EventEmitter<string>();
+  @Output() uname = new EventEmitter<string>();
   @Output() loginSuccess = false;
   loginFailed = false;
   loginForm = this.fb.group({
@@ -40,6 +40,7 @@ export class HomeLoginComponent implements OnInit {
     if (this.loginService.login(this.login))  {
       this.loginSuccess = true;
       this.loginAttempted.emit(this.loginSuccess);
+      this.uname.emit(this.loginForm.get('username').value);
     }
     this.loginFailed = true;
 

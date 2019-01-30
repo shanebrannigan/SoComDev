@@ -1,15 +1,25 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 
-<div *ngIf = "displayAdminTools">
-  <button type="button"(click)=unlockAdmin() >Admin Settings</button>
+<div class="adminSettings" *ngIf = "displayAdminTools">
+
+  <button
+    [style.color]="displaySettings ? 'red':'black'"
+    type="button"(click)=unlockAdmin() >Admin Settings</button>
   <div *ngIf = "displaySettings">
-    <button type="button"(click)=showCreateEvent() >Create Event</button>
-    <button type="button"(click)=showEditCurrentEvent() >Edit Current Event</button>
-    <button type="button"(click)=showExportEventAttendance() >Export Event Attendence</button>
+    <button
+      [style.color]="createEvent ? 'red':'black'"
+      type="button"(click)=showCreateEvent() >Create Event</button>
+    <button
+      [style.color]="editEvent ? 'red':'black'"
+      type="button"(click)=showEditCurrentEvent() >Edit Current Event</button>
+    <button
+      [style.color]="eventAttendance ? 'red':'black'"
+      type="button"(click)=showExportEventAttendance() >Export Event Attendance</button>
     <div *ngIf = "createEvent">
     <app-admin-event-create></app-admin-event-create>
     </div>

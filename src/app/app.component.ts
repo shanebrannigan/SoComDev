@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'the Social Committee Event Website';
   loggedIn: boolean;
+  iWantToGo: boolean;
 
   login(input: boolean) {
     if (input) {
@@ -16,6 +17,14 @@ export class AppComponent {
       this.loggedIn = false;
     }
   }
+
+  iWantToGoMethod(input: boolean) {
+    console.log('In here');
+    if (input) {
+      this.iWantToGo = true;
+    }
+  }
+
 }
 
 

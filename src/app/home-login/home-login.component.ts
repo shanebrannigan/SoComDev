@@ -16,12 +16,17 @@ export class HomeLoginComponent implements OnInit {
   @Output() loginAttempted = new EventEmitter<boolean>();
   @Output() uname = new EventEmitter<string>();
   @Output() loginSuccess = false;
+
+  currentUser: string;
+
   loginFailed = false;
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
+
   constructor(private fb: FormBuilder, private loginService: LoginServiceHttp) { }
+
   ngOnInit() {
   }
 
@@ -32,10 +37,12 @@ export class HomeLoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   }
+
   onSubmit() {
     // take our form values, set them to the login object
     this.login.name = this.loginForm.get('username').value;
     this.login.pass = this.loginForm.get('password').value;
+    this.currentUser = this.login.name;
     // use login service to attempt the login, if return true emit values to parent and proceed
     if (this.loginService.login(this.login))  {
       this.loginSuccess = true;
@@ -43,6 +50,5 @@ export class HomeLoginComponent implements OnInit {
       this.uname.emit(this.loginForm.get('username').value);
     }
     this.loginFailed = true;
-
   }
 }

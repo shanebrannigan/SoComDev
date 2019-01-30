@@ -1,9 +1,6 @@
 import {EventService} from './event-service';
 import {Event} from '../model/Event';
 
-
-
-
 export class EventServiceHttp extends EventService {
 
   event: Event = new Event();
@@ -17,7 +14,9 @@ export class EventServiceHttp extends EventService {
     this.event.guestFee = 123;
   }
 
-
+  createNewEvent(event: Event) {
+    return true;
+  }
 
   getEvent() {
     return this.event;

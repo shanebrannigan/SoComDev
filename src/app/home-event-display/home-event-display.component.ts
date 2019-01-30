@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {EventServiceHttp} from '../services/event-service-http';
 import {Event} from '../model/event';
+import {EventSignUp} from '../model/event-signup';
 
 
 @Component({
@@ -13,6 +14,7 @@ import {Event} from '../model/event';
 export class HomeEventDisplayComponent implements OnInit {
   @Input() uname: string;
   @Output () displayAllEvents = new EventEmitter<boolean>();
+  @Input() eventSignUp: EventSignUp;
   @Output() showEventSignUpForm = new EventEmitter<boolean>();
   @Output() showSignUp = false;
 

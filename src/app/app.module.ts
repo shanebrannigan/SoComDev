@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HomeLoginComponent } from './home-login/home-login.component';
 import { HomeSignupComponent } from './home-signup/home-signup.component';

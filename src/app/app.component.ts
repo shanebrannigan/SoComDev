@@ -50,6 +50,5 @@ export class AppComponent {
       this.iWantToGo = false;
     }
   }
+
 }
-
-

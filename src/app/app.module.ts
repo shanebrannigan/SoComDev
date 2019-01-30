@@ -23,6 +23,9 @@ import { AdminEventEditComponent } from './admin-event-edit/admin-event-edit.com
     AdminEventAttendanceComponent,
     AdminEventEditComponent
   ],
+  entryComponents: [
+    AppComponent, ],
+
   imports: [
     BrowserModule,
     FormsModule,

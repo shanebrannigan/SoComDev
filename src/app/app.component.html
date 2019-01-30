@@ -11,12 +11,11 @@
   </div>
 
   <div *ngIf = "loggedIn">
-    <!-- here we display everything for the user, we can display additional compoents if AdminLoggedIn( -->
-  <app-home-event-display></app-home-event-display>
-
+    <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
+  <app-home-event-display (showEventSignUpForm)=iWantToGoMethod($event)></app-home-event-display>
   </div>
 
-  <div *ngIf = "loggedIn">
+  <div *ngIf = "iWantToGo">
     <app-event-signup></app-event-signup>
   </div>
 

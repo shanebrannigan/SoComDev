@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'the Social Committee Event Website';
   loggedIn: boolean;
   displayEvents: boolean;
+  username = '';
 
   login(input: boolean) {
     if (input) {
@@ -23,6 +24,9 @@ export class AppComponent {
     } else {
       this.displayEvents = false;
     }
+  }
+  logUsername(input: string) {
+    this.username = input;
   }
 }
 

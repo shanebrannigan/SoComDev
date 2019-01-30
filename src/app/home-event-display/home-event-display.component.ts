@@ -11,6 +11,7 @@ import {Event} from '../model/event';
   providers: [EventServiceHttp]
 })
 export class HomeEventDisplayComponent implements OnInit {
+  @Input() uname: string;
   @Output () displayAllEvents = new EventEmitter<boolean>();
   eventToDisplay: Event;
   constructor(private eventService: EventServiceHttp) {
@@ -19,6 +20,7 @@ export class HomeEventDisplayComponent implements OnInit {
   ngOnInit() {
     // get the events, display them
     this.eventToDisplay = this.eventService.getEvent();
+    console.log(this.uname);
   }
 
   showPreviousEvents() {

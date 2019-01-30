@@ -4,25 +4,30 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import {LoginService} from '../services/login-service';
 import {LoginServiceHttp} from '../services/login-service-http';
+import {EventSignUp} from '../model/event-signup';
+import {EventSignUpServiceHttp} from '../services/event-signup-service-http';
 
 @Component({
   selector: 'app-home-login',
   templateUrl: './home-login.component.html',
   styleUrls: ['./home-login.component.css'],
-  providers: [LoginServiceHttp]
+  providers: [LoginServiceHttp, EventSignUpServiceHttp]
 })
 export class HomeLoginComponent implements OnInit {
   @Input() login: Login = new Login();
   @Output() loginAttempted = new EventEmitter<boolean>();
-  @Output() uname = new EventEmitter<string>();
+  @Output() foo = new EventEmitter<string>();
   @Output() loginSuccess = false;
-  @Output() isAdmin = new EventEmitter<boolean>();
+  @Output() currentUserObj = new EventEmitter<EventSignUp>();
+
   loginFailed = false;
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
-  constructor(private fb: FormBuilder, private loginService: LoginServiceHttp) { }
+
+  constructor(private fb: FormBuilder, private loginService: LoginServiceHttp, private eventSignUpService: EventSignUpServiceHttp) { }
+
   ngOnInit() {
   }
 
@@ -33,6 +38,7 @@ export class HomeLoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   }
+
   onSubmit() {
     // take our form values, set them to the login object
     this.login.name = this.loginForm.get('username').value;
@@ -41,14 +47,7 @@ export class HomeLoginComponent implements OnInit {
     if (this.loginService.login(this.login))  {
       this.loginSuccess = true;
       this.loginAttempted.emit(this.loginSuccess);
-      this.uname.emit(this.loginForm.get('username').value);
-    }
-    if (this.loginService.checkAdmin(this.login.name)) {
-      this.isAdmin.emit(true);
-    } else {
-      this.isAdmin.emit(false);
     }
     this.loginFailed = true;
-
   }
 }

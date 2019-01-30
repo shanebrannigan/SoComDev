@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {EventSignUp} from './model/event-signup';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'the Social Committee Event Website';
   loggedIn: boolean;
-  displayEvents: boolean;
-  username = '';
-  isAdmin: boolean;
   iWantToGo: boolean;
 
   login(input: boolean) {
@@ -20,26 +18,22 @@ export class AppComponent {
       this.loggedIn = false;
     }
   }
-  tryDisplayEvents(input: boolean) {
-    if (input) {
-      this.displayEvents = true;
-    } else {
-      this.displayEvents = false;
-    }
-  }
-  logUsername(input: string) {
-    this.username = input;
 
-  }
-  checkAdmin(input: boolean) {
-    this.isAdmin = input;
-  }
   iWantToGoMethod(input: boolean) {
     console.log('In here');
     if (input) {
       this.iWantToGo = true;
     }
   }
+
+  cancelSignUpForm(input: boolean) {
+    if (input) {
+      this.iWantToGo = false;
+    }
+  }
+
+  getEventSignUp(input: EventSignUp) {
+
+  }
+
 }
-
-

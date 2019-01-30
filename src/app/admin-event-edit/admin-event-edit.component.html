@@ -1,0 +1,21 @@
+<form [formGroup]="eventEditForm" (ngSubmit)="updateEvent()">
+  <fieldset>
+    <label>Event Title:</label>
+    <input type="text" formControlName="title">
+  </fieldset>
+  <fieldset>
+    <label>Locale:</label>
+    <input size="30" type="text" formControlName="locale">
+  </fieldset>
+  <fieldset>
+    <label>Date:</label>
+    <input size="30" type="date" formControlName="date">
+  </fieldset>
+  <fieldset>
+    <label>Length of Course:</label>
+    <input type="number" formControlName="guestFee">
+  </fieldset>
+  <fieldset>
+    <input type="submit" [disabled]="!eventEditForm.valid" value="Update Event"/>
+  </fieldset>
+</form>

@@ -1,15 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventSignUp} from '../model/event-signup';
+import {EventServiceHttp} from '../services/event-service-http';
+import {Event} from '../model/event';
 
 @Component({
   selector: 'app-event-signup',
   templateUrl: './event-signup.component.html',
-  styleUrls: ['./event-signup.component.css']
+  styleUrls: ['./event-signup.component.css'],
+  providers: [EventServiceHttp]
 })
 export class EventSignupComponent implements OnInit {
+  @Output() cancelSignUpForm = new EventEmitter<boolean>();
+  @Output() formCancelled = false;
 
-  isValidFormSubmitted: boolean = null;
+  eventToDisplay: Event;
 
   signUpForm = new FormGroup({
     isGoingToEvent: new FormControl(false, Validators.requiredTrue),
@@ -18,9 +23,15 @@ export class EventSignupComponent implements OnInit {
     guestName: new FormControl('')
   });
 
-  eventSignUp = new EventSignUp();
+  eventSignUp = new EventSignUp;
 
-  constructor() { }
+  constructor(private eventService: EventServiceHttp) {
+    this.eventSignUp.isGoingToEvent = false;
+    this.eventSignUp.isMember = false;
+    this.eventSignUp.isBringingGuest = false;
+    this.eventSignUp.guestName = null;
+    this.eventSignUp.confirmation = false;
+  }
 
   onFormSubmit() {
     console.log('Form Submitted',
@@ -33,14 +44,16 @@ export class EventSignupComponent implements OnInit {
     this.eventSignUp.isMember = this.signUpForm.get('isMember').value;
     this.eventSignUp.isBringingGuest = this.signUpForm.get('isBringingGuest').value;
     this.eventSignUp.guestName = this.signUpForm.get('guestName').value;
-
+    this.eventSignUp.confirmation = true;
   }
 
   clearSelected() {
-
+    this.formCancelled = true;
+    this.cancelSignUpForm.emit(this.formCancelled);
   }
 
   ngOnInit() {
+    this.eventToDisplay = this.eventService.getEvent();
   }
 
 }

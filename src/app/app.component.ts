@@ -24,6 +24,10 @@ export class AppComponent {
     }
   }
 
+  cancelSignUpForm(input: boolean) {
+    if (input) {
+      this.iWantToGo = false;
+    }
+  }
+
 }
-
-

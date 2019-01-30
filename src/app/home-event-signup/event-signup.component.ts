@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventSignUp} from '../model/event-signup';
 
@@ -33,6 +33,10 @@ export class EventSignupComponent implements OnInit {
     this.eventSignUp.isMember = this.signUpForm.get('isMember').value;
     this.eventSignUp.isBringingGuest = this.signUpForm.get('isBringingGuest').value;
     this.eventSignUp.guestName = this.signUpForm.get('guestName').value;
+
+  }
+
+  clearSelected() {
 
   }
 

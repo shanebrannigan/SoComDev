@@ -8,8 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'the Social Committee Event Website';
   loggedIn: boolean;
-  displayEvents: boolean;
-  username = '';
+  iWantToGo: boolean;
 
   login(input: boolean) {
     if (input) {
@@ -18,16 +17,20 @@ export class AppComponent {
       this.loggedIn = false;
     }
   }
-  tryDisplayEvents(input: boolean) {
+
+  iWantToGoMethod(input: boolean) {
+    console.log('In here');
     if (input) {
-      this.displayEvents = true;
-    } else {
-      this.displayEvents = false;
+      this.iWantToGo = true;
     }
   }
-  logUsername(input: string) {
-    this.username = input;
+
+  cancelSignUpForm(input: boolean) {
+    if (input) {
+      this.iWantToGo = false;
+    }
   }
+
 }
 
 

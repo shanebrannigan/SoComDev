@@ -18,7 +18,6 @@ export class AppComponent {
       this.loggedIn = false;
     }
   }
-
   iWantToGoMethod(input: boolean) {
     console.log('In here');
     if (input) {

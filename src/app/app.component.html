@@ -16,7 +16,7 @@
   </div>
 
   <div *ngIf = "iWantToGo">
-    <app-event-signup></app-event-signup>
+    <app-event-signup (cancelSignUpForm)=cancelSignUpForm($event)></app-event-signup>
   </div>
 
   <div>

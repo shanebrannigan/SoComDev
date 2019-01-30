@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventSignUp} from '../model/event-signup';
 
@@ -8,8 +8,8 @@ import {EventSignUp} from '../model/event-signup';
   styleUrls: ['./event-signup.component.css']
 })
 export class EventSignupComponent implements OnInit {
-
-  isValidFormSubmitted: boolean = null;
+  @Output() cancelSignUpForm = new EventEmitter<boolean>();
+  @Output() formCancelled = false;
 
   signUpForm = new FormGroup({
     isGoingToEvent: new FormControl(false, Validators.requiredTrue),
@@ -37,7 +37,8 @@ export class EventSignupComponent implements OnInit {
   }
 
   clearSelected() {
-
+    this.formCancelled = true;
+    this.cancelSignUpForm.emit(this.formCancelled);
   }
 
   ngOnInit() {

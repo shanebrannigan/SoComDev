@@ -10,6 +10,7 @@ export class AppComponent {
   loggedIn: boolean;
   displayEvents: boolean;
   username = '';
+  iWantToGo: boolean;
 
   login(input: boolean) {
     if (input) {
@@ -27,6 +28,12 @@ export class AppComponent {
   }
   logUsername(input: string) {
     this.username = input;
+  }
+  iWantToGoMethod(input: boolean) {
+    console.log('In here');
+    if (input) {
+      this.iWantToGo = true;
+    }
   }
 }
 

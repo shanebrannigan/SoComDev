@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {EventSignUp} from './model/event-signup';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,10 @@ export class AppComponent {
     if (input) {
       this.iWantToGo = false;
     }
+  }
+
+  getEventSignUp(input: EventSignUp) {
+
   }
 
 }

@@ -4,20 +4,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import {LoginService} from '../services/login-service';
 import {LoginServiceHttp} from '../services/login-service-http';
+import {EventSignUp} from '../model/event-signup';
+import {EventSignUpServiceHttp} from '../services/event-signup-service-http';
 
 @Component({
   selector: 'app-home-login',
   templateUrl: './home-login.component.html',
   styleUrls: ['./home-login.component.css'],
-  providers: [LoginServiceHttp]
+  providers: [LoginServiceHttp, EventSignUpServiceHttp]
 })
 export class HomeLoginComponent implements OnInit {
   @Input() login: Login = new Login();
   @Output() loginAttempted = new EventEmitter<boolean>();
   @Output() foo = new EventEmitter<string>();
   @Output() loginSuccess = false;
-
-  currentUser: string;
+  @Output() currentUserObj = new EventEmitter<EventSignUp>();
 
   loginFailed = false;
   loginForm = this.fb.group({
@@ -25,7 +26,7 @@ export class HomeLoginComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private loginService: LoginServiceHttp) { }
+  constructor(private fb: FormBuilder, private loginService: LoginServiceHttp, private eventSignUpService: EventSignUpServiceHttp) { }
 
   ngOnInit() {
   }
@@ -42,7 +43,6 @@ export class HomeLoginComponent implements OnInit {
     // take our form values, set them to the login object
     this.login.name = this.loginForm.get('username').value;
     this.login.pass = this.loginForm.get('password').value;
-    this.currentUser = this.login.name;
     // use login service to attempt the login, if return true emit values to parent and proceed
     if (this.loginService.login(this.login))  {
       this.loginSuccess = true;

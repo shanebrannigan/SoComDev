@@ -2,20 +2,19 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" xmlns="">
 
-  <label style="padding-right: 2%;" >
+  <label>
     N-Number:
-    <input type="text" formControlName="username" required>
-
-  </label>
+    <input class="login-boxes" type="text" placeholder="N..." formControlName="username" required>
+  <br>
   <label>
     Password:
-    <input type="password" formControlName="password" required>
+    <input class="login-boxes" type="password" placeholder="********" formControlName="password" required>
   </label>
+  <br>
   <button type="submit" [disabled]="!loginForm.valid">Login</button>
-
   <span *ngIf="(loginFailed==true)">
    Login Failed. Please retry.
   </span>
-
+  </label>
 </form>
 </html>

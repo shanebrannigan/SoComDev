@@ -1,9 +1,12 @@
 import {EventService} from './event-service';
-import {Event} from '../model/Event';
+import {Event} from '../model/event';
+import {EventSignUp} from '../model/event-signup';
 
 export class EventServiceHttp extends EventService {
 
   event: Event = new Event();
+  eventSignUp: EventSignUp = new EventSignUp();
+
   constructor() {
     super();
     this.event.img = 'IMG';
@@ -33,6 +36,10 @@ export class EventServiceHttp extends EventService {
 
   adminExportAttendenceCurrentEvent(event: Event) {
     return true;
+  }
+
+  getUserDetails(eventSignUp: EventSignUp): EventSignUp {
+    return this.eventSignUp;
   }
 }
 

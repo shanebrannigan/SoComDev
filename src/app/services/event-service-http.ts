@@ -38,7 +38,7 @@ export class EventServiceHttp extends EventService {
     return true;
   }
 
-  getUserDetails() {
+  getUserDetails(userName: string) {
     return this.userDetails;
   }
 

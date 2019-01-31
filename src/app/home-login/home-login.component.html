@@ -11,7 +11,7 @@
     <input class="login-boxes" type="password" placeholder="********" formControlName="password" required>
   </label>
   <br>
-  <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  <button id="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
   <span *ngIf="(loginFailed==true)">
    Login Failed. Please retry.
   </span>

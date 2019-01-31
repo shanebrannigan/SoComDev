@@ -1,5 +1,5 @@
 import {EventService} from './event-service';
-import {Event} from '../model/Event';
+import {Event} from '../model/event';
 
 export class EventServiceHttp extends EventService {
 

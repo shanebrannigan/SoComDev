@@ -11,7 +11,7 @@
 
 </div>
 
-<div style="text-align:center;">
+<div id="title-div" style="text-align:center;">
 
   <h1 id="page-title"> Welcome to {{ title }}!</h1>
   <!-- needs output event to say login success-->
@@ -53,6 +53,10 @@
       [uname]="username" ></app-home-footer>
 
   </div>
+  <div *ngIf = "!loggedIn" id="hidden-div-bottom">
+
+  </div>
+
 </div>
 </body>
 

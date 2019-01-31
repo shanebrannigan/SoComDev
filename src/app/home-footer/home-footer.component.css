@@ -18,7 +18,6 @@
 .adminSettings{
   width:100%;
   height:90%;
-  background:darkorange;
 }
 /*
     Multicoloured Hover Variations
@@ -34,5 +33,5 @@
   color: #d34836;
 }
 #social-em:hover {
-  color: #f39c12;
+  color: red;
 }

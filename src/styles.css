@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+div {
+  color: rgb(0,38,99);
+}
+
+body {
+  height: 1024px;
+}
+html {
+  min-height: 100%;
+}
+#top-div {
+  min-height: 100px;
+
+}
+#hidden-div {
+  padding-bottom: 8%;
+  background-color: yellow;
+  background-image: linear-gradient(to bottom, rgb(236,172,0), white);
+  height: 300px;
+}
+#hidden-div-b {
+  padding-bottom: 8%;
+  background-color: yellow;
+  background-image: linear-gradient(to top, rgb(236,172,0), white);
+  height: 300px;
+}
+
+#grad {
+  background-image: linear-gradient(to bottom right, rgb(241,193,64), white);
+}
+
+#welcoming-logo {
+  padding-left: 15px;
+  padding-top: 15px;
+  height: 215px;
+  width: 400px;
+}
+
+#page-title {
+  font-family: 'Bad Script', cursive;
+}
+
+#page-title {
+  font-size: 90px;
+  padding-top: 3%;
+  padding-bottom: 4%;
+  color: rgb(0,38,99);
+}
+
+

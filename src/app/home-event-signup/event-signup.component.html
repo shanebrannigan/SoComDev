@@ -10,15 +10,16 @@
     <div>
       <label for="isGoingToEvent">Do you wish to attend the event?</label>
       <input type="checkbox" id="isGoingToEvent" formControlName="isGoingToEvent"
+             (click)="showGoingForm()"
              [(ngModel)]="eventSignUp.isGoingToEvent">
     </div>
 
-    <div *ngIf=this.eventSignUp.isGoingToEvent>
+    <div *ngIf=this.showAddQuestions>
       <label for="isMember">Are you a member of the Social Club?</label>
       <input type="checkbox" id="isMember" formControlName="isMember" [(ngModel)]="eventSignUp.isMember">
     </div>
 
-    <div *ngIf=this.eventSignUp.isGoingToEvent>
+    <div *ngIf=this.showAddQuestions>
       <label for="isBringingGuest">Are you bringing a guest?</label>
       <input type="checkbox" id="isBringingGuest" formControlName="isBringingGuest"
              [(ngModel)]="eventSignUp.isBringingGuest">

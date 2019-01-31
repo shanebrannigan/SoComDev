@@ -5,52 +5,41 @@
 </head>
 
 <body>
-<div *ngIf = "!loggedIn" id="hidden-div">
-
-  <img id="welcoming-logo" src="assets/images/LMI_V_BLUE_RGB.png"  alt="landing-image">
-
+<div *ngIf="!loggedIn" id="hidden-div">
+  <img id="welcoming-logo" src="assets/images/LMI_V_BLUE_RGB.png" alt="landing-image">
 </div>
 
 <div style="text-align:center;">
-
   <h1 id="page-title"> Welcome to {{ title }}!</h1>
   <!-- needs output event to say login success-->
-
-  <div *ngIf = "!loggedIn">
-  <app-home-login (loginAttempted)=login($event)
-                  (uname)=logUsername($event)
-                  (isAdmin)=checkAdmin($event)
-  ></app-home-login>
+  <div *ngIf="!loggedIn">
+    <app-home-login (loginAttempted)=login($event)
+                    (uname)=logUsername($event)
+                    (isAdmin)=checkAdmin($event)
+    ></app-home-login>
   </div>
 
-  <div *ngIf = "(loggedIn && !displayEvents)">
+  <div *ngIf="(loggedIn && !displayEvents)">
     <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
-
-
     <app-home-event-display
       [uname]="username"
-      (displayAllEvents)=tryDisplayEvents($event)>  </app-home-event-display>
-
-
+      (displayAllEvents)=tryDisplayEvents($event)></app-home-event-display>
   </div>
-  <div *ngIf = "displayEvents">
+
+  <div *ngIf="displayEvents">
     displaying events temp holder for previous events component
   </div>
-  <div *ngIf = "loggedIn">
-    <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
-    <app-home-event-display (showEventSignUpForm)=iWantToGoMethod($event)></app-home-event-display>
-  </div>
 
-  <div *ngIf = "iWantToGo">
-    <app-event-signup (cancelSignUpForm)=cancelSignUpForm($event)></app-event-signup>
+  <div>
+    <app-event-signup></app-event-signup>
   </div>
 
   <div>
     <app-home-footer
       [displayAdminTools]="isAdmin"
-      [uname]="username" ></app-home-footer>
-
+      [uname]="username"></app-home-footer>
   </div>
+
 </div>
 </body>
 

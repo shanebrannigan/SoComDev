@@ -5,7 +5,7 @@ import {EventSignUp} from '../model/event-signup';
 export class EventServiceHttp extends EventService {
 
   event: Event = new Event();
-  eventSignUp: EventSignUp = new EventSignUp();
+  userDetails: EventSignUp = new EventSignUp();
 
   constructor() {
     super();
@@ -38,8 +38,12 @@ export class EventServiceHttp extends EventService {
     return true;
   }
 
-  getUserDetails(eventSignUp: EventSignUp): EventSignUp {
-    return this.eventSignUp;
+  getUserDetails() {
+    return this.userDetails;
+  }
+
+  updateUserDetails(eventSignUp: EventSignUp) {
+    this.userDetails = eventSignUp;
   }
 }
 

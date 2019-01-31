@@ -12,9 +12,11 @@ import {Event} from '../model/event';
 })
 
 export class EventSignupComponent implements OnInit {
+  @Input() userName: string;
   @Output() cancelSignUpForm = new EventEmitter<boolean>();
   @Output() formCancelled = false;
   showSignUp = false;
+  showAddQuestions = false;
 
   signUpForm: FormGroup;
   formSubmitted = false;
@@ -82,7 +84,20 @@ export class EventSignupComponent implements OnInit {
     this.showSignUp = true;
   }
 
+  showGoingForm() {
+    if (!this.eventSignUp.isGoingToEvent) {
+      this.showAddQuestions = true;
+    } else {
+      this.showAddQuestions = false;
+      this.eventSignUp.isMember = false;
+      this.eventSignUp.isBringingGuest = false;
+    }
+
+    this.setGuestNameValidity();
+  }
+
   ngOnInit() {
+    this.eventService.getUserDetails();
     this.buildForm();
     this.setGuestNameValidity();
     this.eventToDisplay = this.eventService.getEvent();

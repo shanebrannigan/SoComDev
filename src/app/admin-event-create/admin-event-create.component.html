@@ -2,7 +2,7 @@
   <span *ngIf="(!eventCreated==true)">
   <label>
     Image:
-    <input type="url" formControlName="img" required>
+    Select a file: <input type="text" formControlName="img">
 
   </label>
   <label>
@@ -11,7 +11,7 @@
   </label>
   <label>
     Info:
-    <input type="text" formControlName="info" required>
+    <input type="info" formControlName="info" required>
 
   </label>
   <label>
@@ -28,8 +28,6 @@
     <input type="number" formControlName="guestFee" required>
   </label>
   <button type="submit" [disabled]="!createEventForm.valid">Submit Event</button>
-
-
   </span>
   <span *ngIf="(eventCreated==true)">
     Event created!

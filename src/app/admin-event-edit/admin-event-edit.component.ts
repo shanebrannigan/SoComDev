@@ -11,6 +11,7 @@ import {Event} from '../model/event';
 })
 export class AdminEventEditComponent implements OnInit {
 
+  eventEdited = false;
   eventEditForm: FormGroup;
   currentEvent: Event;
 
@@ -31,6 +32,16 @@ export class AdminEventEditComponent implements OnInit {
   }
 
   updateEvent() {
+    this.currentEvent.img = this.eventEditForm.get('img').value;
+    this.currentEvent.title = this.eventEditForm.get('title').value;
+    this.currentEvent.locale = this.eventEditForm.get('locale').value;
+    this.currentEvent.date = this.eventEditForm.get('date').value;
+    this.currentEvent.guestFee = this.eventEditForm.get('guestFee').value;
+    if (this.eventService.adminEditCurrentEvent(this.currentEvent)) {
+      this.eventEdited = true;
+    } else {
+      // error report event not edited
+    }
   }
 
 }

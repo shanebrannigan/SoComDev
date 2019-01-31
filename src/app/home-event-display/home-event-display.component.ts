@@ -25,6 +25,7 @@ export class HomeEventDisplayComponent implements OnInit {
 
   ngOnInit() {
     // get the events, display them
+    // TODO: this needs to be a reactive stream update - so that when admin edits it it updates...
     this.eventToDisplay = this.eventService.getEvent();
     console.log(this.uname);
   }

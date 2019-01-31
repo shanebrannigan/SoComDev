@@ -29,5 +29,17 @@ export class AdminEventCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    this.event.img = this.createEventForm.get('img').value;
+    this.event.title = this.createEventForm.get('title').value;
+    this.event.info = this.createEventForm.get('info').value;
+    this.event.locale = this.createEventForm.get('locale').value;
+    this.event.date =  this.createEventForm.get('date').value;
+    this.event.guestFee = this.createEventForm.get('guestFee').value;
+    // should perform validation here...
+   if ( this.eventService.createNewEvent(this.event)) {
+     this.eventCreated =  true;
+   } else {
+     // display error
+   }
   }
 }

@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="mainDiff" style="text-align:center; padding-top: 15%">
+<div style="text-align:center; padding-top: 15%">
 
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script">
@@ -20,24 +20,29 @@
   ></app-home-login>
   </div>
 
+  <div *ngIf = "(loggedIn && !displayEvents)">
+    <!-- here we display everything for the user, we can display additional compoents if AdminLoggedIn( -->
+  <app-home-event-display
+    [uname]="username"
+    (displayAllEvents)=tryDisplayEvents($event)>  </app-home-event-display>
+
+    <div>
+      <app-event-signup (cancelSignUpForm)=cancelSignUpForm($event)></app-event-signup>
+    </div>
+
+  </div>
+
 
   <div *ngIf = "displayEvents">
     displaying events temp holder for previous events component
   </div>
-  <div *ngIf = "loggedIn">
-    <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
-  <app-home-event-display (showEventSignUpForm)=iWantToGoMethod($event)></app-home-event-display>
-  </div>
 
-  <div *ngIf = "iWantToGo">
-    <app-event-signup (cancelSignUpForm)=cancelSignUpForm($event)></app-event-signup>
-  </div>
 
-<div>
-    <app-home-footer
-      [displayAdminTools]="isAdmin"
-      [uname]="username" ></app-home-footer>
-</div>
+  <div>
+      <app-home-footer
+        [displayAdminTools]="isAdmin"
+        [uname]="username" ></app-home-footer>
+  </div>
 </div>
 
 

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventSignUp} from '../model/event-signup';
 import {EventServiceHttp} from '../services/event-service-http';
 import {Event} from '../model/event';
@@ -10,27 +10,44 @@ import {Event} from '../model/event';
   styleUrls: ['./event-signup.component.css'],
   providers: [EventServiceHttp]
 })
+
 export class EventSignupComponent implements OnInit {
   @Output() cancelSignUpForm = new EventEmitter<boolean>();
   @Output() formCancelled = false;
+  showSignUp = false;
 
+  signUpForm: FormGroup;
+  formSubmitted = false;
+  eventSignUp = new EventSignUp;
   eventToDisplay: Event;
 
-  signUpForm = new FormGroup({
-    isGoingToEvent: new FormControl(false, Validators.requiredTrue),
-    isMember: new FormControl(false),
-    isBringingGuest: new FormControl(false),
-    guestName: new FormControl('')
-  });
+  buildForm() {
+    this.signUpForm = this.formBuilder.group({
+      isGoingToEvent: [false],
+      isMember: [false],
+      isBringingGuest: [false],
+      guestName: [null]
+    });
+  }
 
-  eventSignUp = new EventSignUp;
+  constructor(private eventService: EventServiceHttp, private formBuilder: FormBuilder) {
 
-  constructor(private eventService: EventServiceHttp) {
-    this.eventSignUp.isGoingToEvent = false;
-    this.eventSignUp.isMember = false;
-    this.eventSignUp.isBringingGuest = false;
-    this.eventSignUp.guestName = null;
-    this.eventSignUp.confirmation = false;
+  }
+
+  setGuestNameValidity() {
+    const guestNameControl = this.signUpForm.get('guestName');
+
+    this.signUpForm.get('isBringingGuest').valueChanges
+      .subscribe(isBringingGuest => {
+
+        if (isBringingGuest) {
+          guestNameControl.setValidators(Validators.required);
+        } else {
+          guestNameControl.setValidators(null);
+        }
+
+        guestNameControl.updateValueAndValidity();
+      });
   }
 
   onFormSubmit() {
@@ -40,19 +57,34 @@ export class EventSignupComponent implements OnInit {
       this.eventSignUp.isBringingGuest,
       this.eventSignUp.guestName
       );
-    this.eventSignUp.isGoingToEvent = this.signUpForm.get('isGoingToEvent').value;
-    this.eventSignUp.isMember = this.signUpForm.get('isMember').value;
-    this.eventSignUp.isBringingGuest = this.signUpForm.get('isBringingGuest').value;
-    this.eventSignUp.guestName = this.signUpForm.get('guestName').value;
-    this.eventSignUp.confirmation = true;
+      this.formSubmitted = true;
+
+    if (this.signUpForm.valid) {
+      this.eventSignUp.isGoingToEvent = this.signUpForm.get('isGoingToEvent').value;
+      this.eventSignUp.isMember = this.signUpForm.get('isMember').value;
+      this.eventSignUp.isBringingGuest = this.signUpForm.get('isBringingGuest').value;
+      this.eventSignUp.guestName = this.signUpForm.get('guestName').value;
+
+      if (this.eventSignUp.isGoingToEvent) {
+        this.eventSignUp.confirmation = true;
+      } else {
+        this.eventSignUp.confirmation = false;
+      }
+      this.showSignUp = false;
+    }
   }
 
   clearSelected() {
-    this.formCancelled = true;
-    this.cancelSignUpForm.emit(this.formCancelled);
+    this.showSignUp = false;
+  }
+
+  clickIWantToGo() {
+    this.showSignUp = true;
   }
 
   ngOnInit() {
+    this.buildForm();
+    this.setGuestNameValidity();
     this.eventToDisplay = this.eventService.getEvent();
   }
 

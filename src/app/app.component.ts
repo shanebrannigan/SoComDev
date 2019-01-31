@@ -9,6 +9,9 @@ import {EventSignUp} from './model/event-signup';
 export class AppComponent {
   title = 'the Social Committee Event Website';
   loggedIn: boolean;
+  displayEvents: boolean;
+  username = '';
+  isAdmin: boolean;
   iWantToGo: boolean;
 
   login(input: boolean) {
@@ -19,21 +22,21 @@ export class AppComponent {
     }
   }
 
-  iWantToGoMethod(input: boolean) {
-    console.log('In here');
+  tryDisplayEvents(input: boolean) {
     if (input) {
-      this.iWantToGo = true;
+      this.displayEvents = true;
+    } else {
+      this.displayEvents = false;
     }
   }
 
-  cancelSignUpForm(input: boolean) {
-    if (input) {
-      this.iWantToGo = false;
-    }
+  logUsername(input: string) {
+    this.username = input;
+
   }
 
-  getEventSignUp(input: EventSignUp) {
-
+  checkAdmin(input: boolean) {
+    this.isAdmin = input;
   }
 
 }

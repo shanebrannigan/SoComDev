@@ -13,8 +13,6 @@ import {EventSignUp} from '../model/event-signup';
 })
 export class HomeEventDisplayComponent implements OnInit {
   @Input() eventSignUp: EventSignUp;
-  @Output() showEventSignUpForm = new EventEmitter<boolean>();
-  @Output() showSignUp = false;
 
   eventToDisplay: Event;
 
@@ -25,12 +23,5 @@ export class HomeEventDisplayComponent implements OnInit {
     // get the events, display them
     // TODO: this needs to be a reactive stream update - so that when admin edits it it updates...
     this.eventToDisplay = this.eventService.getEvent();
-  }
-
-  onClickIWantToGo() {
-    console.log('show events!');
-    this.showSignUp = true;
-    console.log(this.showSignUp);
-    this.showEventSignUpForm.emit(this.showSignUp);
   }
 }

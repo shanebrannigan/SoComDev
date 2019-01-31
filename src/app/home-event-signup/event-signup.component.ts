@@ -12,7 +12,7 @@ import {Event} from '../model/event';
 })
 
 export class EventSignupComponent implements OnInit {
-  @Input() userName: string;
+  @Input() uname: string;
   @Output() cancelSignUpForm = new EventEmitter<boolean>();
   @Output() formCancelled = false;
   showSignUp = false;
@@ -73,6 +73,8 @@ export class EventSignupComponent implements OnInit {
         this.eventSignUp.confirmation = false;
       }
       this.showSignUp = false;
+
+      this.eventService.updateUserDetails(this.eventSignUp);
     }
   }
 
@@ -97,7 +99,7 @@ export class EventSignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventService.getUserDetails();
+    this.eventSignUp = this.eventService.getUserDetails(this.uname);
     this.buildForm();
     this.setGuestNameValidity();
     this.eventToDisplay = this.eventService.getEvent();

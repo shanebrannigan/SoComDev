@@ -1,3 +1,6 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
 <br>
 <div *ngIf="!this.eventSignUp.confirmation && !this.showSignUp">
   <button class="button" (click)="clickIWantToGo()">I want to go</button>
@@ -6,7 +9,7 @@
 <div *ngIf=this.showSignUp>
   <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
 
-    <span class="fa fa-times-circle" (click)="clearSelected()"></span>
+    <span (click)="clearSelected()"><i class="fa fa-times-circle" style="font-size:30px;color:red;"></i></span>
     <div>
       <label for="isGoingToEvent">Do you wish to attend the event?</label>
       <input type="checkbox" id="isGoingToEvent" formControlName="isGoingToEvent"

@@ -30,7 +30,7 @@
     displaying events temp holder for previous events component
   </div>
 
-  <div>
+  <div *ngIf=loggedIn>
     <app-event-signup
       [uname]="username"></app-event-signup>
   </div>

@@ -10,27 +10,31 @@
   <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
 
     <span (click)="clearSelected()"><i class="fa fa-times-circle" style="font-size:30px;color:red;"></i></span>
-    <div>
-      <label for="isGoingToEvent">Do you wish to attend the event?</label>
+    <div class="container">
+      <label for="isGoingToEvent">Do you wish to attend the event?  </label>
       <input type="checkbox" id="isGoingToEvent" formControlName="isGoingToEvent"
              (click)="showGoingForm()"
              [(ngModel)]="eventSignUp.isGoingToEvent">
+      <span class="checkmark"></span>
     </div>
 
-    <div *ngIf=this.showAddQuestions>
-      <label for="isMember">Are you a member of the Social Club?</label>
+    <div *ngIf=this.showAddQuestions class="container">
+      <label for="isMember">Are you a member of the Social Club?  </label>
       <input type="checkbox" id="isMember" formControlName="isMember" [(ngModel)]="eventSignUp.isMember">
+      <span class="checkmark"></span>
     </div>
 
-    <div *ngIf=this.showAddQuestions>
-      <label for="isBringingGuest">Are you bringing a guest?</label>
+    <div *ngIf=this.showAddQuestions class="container">
+      <label for="isBringingGuest">Are you bringing a guest?  </label>
       <input type="checkbox" id="isBringingGuest" formControlName="isBringingGuest"
              [(ngModel)]="eventSignUp.isBringingGuest">
+      <span class="checkmark"></span>
     </div>
 
-    <div *ngIf="this.eventSignUp.isBringingGuest">
-      <label for="guestName">What is your guest's name?</label>
+    <div *ngIf="this.eventSignUp.isBringingGuest" class="container">
+      <label for="guestName">What is your guest's name?  </label>
       <input id="guestName" formControlName="guestName" placeholder="Guest Name" [(ngModel)]="eventSignUp.guestName">
+      <span class="checkmark"></span>
     </div>
 
     <button type="submit" [disabled]="!signUpForm.valid">Submit</button>

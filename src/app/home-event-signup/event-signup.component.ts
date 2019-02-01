@@ -17,6 +17,7 @@ export class EventSignupComponent implements OnInit {
   @Output() formCancelled = false;
   showSignUp = false;
   showAddQuestions = false;
+  guestNameEmpty = false;
 
   signUpForm: FormGroup;
   formSubmitted = false;
@@ -47,8 +48,19 @@ export class EventSignupComponent implements OnInit {
         } else {
           guestNameControl.setValidators(null);
         }
-
         guestNameControl.updateValueAndValidity();
+      });
+  }
+
+  checkGuestNameEmpty() {
+    this.signUpForm.get('guestName').valueChanges
+      .subscribe(guestName => {
+
+        if (guestName === null) {
+          this.guestNameEmpty = true;
+        } else {
+          this.guestNameEmpty = false;
+        }
       });
   }
 
@@ -58,8 +70,8 @@ export class EventSignupComponent implements OnInit {
       this.eventSignUp.isMember,
       this.eventSignUp.isBringingGuest,
       this.eventSignUp.guestName
-      );
-      this.formSubmitted = true;
+    );
+    this.formSubmitted = true;
 
     if (this.signUpForm.valid) {
       this.eventSignUp.isGoingToEvent = this.signUpForm.get('isGoingToEvent').value;

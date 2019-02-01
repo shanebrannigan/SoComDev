@@ -43,3 +43,7 @@ input[type=text]:focus {
   margin: 5px;
 }
 
+.warningMessage {
+  color: red;
+}
+

@@ -36,5 +36,4 @@ export class AppComponent {
   checkAdmin(input: boolean) {
     this.isAdmin = input;
   }
-
 }

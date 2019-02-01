@@ -13,6 +13,7 @@ export class AppComponent {
   username = '';
   isAdmin: boolean;
   iWantToGo: boolean;
+  loginSuccessful: boolean;
 
   login(input: boolean) {
     if (input) {

@@ -1,19 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<head>
+<head style="background-color: yellow">
   <!-- importing custom font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script">
 </head>
-
 <body>
+<!-- Div containing LM logo -->
 <div *ngIf = "!loggedIn" id="hidden-div">
-
   <img id="welcoming-logo" src="assets/images/LMI_V_BLUE_RGB.png"  alt="landing-image">
-
 </div>
 
-<div id="title-div">
+<div id="title-div" [ngClass]="{'original-title-class': !loggedIn, 'grad-title-class': loggedIn}">
 
-  <h1 id="page-title"> Welcome to {{ title }}!</h1>
+  <h1 id="page-title" > Welcome to {{ title }}!</h1>
   <!-- needs output event to say login success-->
 
   <div *ngIf = "!loggedIn">
@@ -21,17 +19,17 @@
                     (uname)=logUsername($event)
                     (isAdmin)=checkAdmin($event)
     >
-
     </app-home-login>
   </div>
+
 
   <div *ngIf = "(loggedIn && !displayEvents)">
     <!-- here we display everything for the user, we can display additional components if AdminLoggedIn( -->
 
 
-    <app-home-event-display
+   <!-- <app-home-event-display
       [uname]="username"
-      (displayAllEvents)=tryDisplayEvents($event)>  </app-home-event-display>
+      (displayAllEvents)=tryDisplayEvents($event)>  </app-home-event-display>-->
 
 
   </div>
@@ -53,10 +51,6 @@
       [uname]="username" ></app-home-footer>
 
   </div>
-  <div *ngIf = "!loggedIn" id="hidden-div-bottom">
-
   </div>
-
-</div>
 </body>
 

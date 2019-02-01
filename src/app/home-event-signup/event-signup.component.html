@@ -29,10 +29,12 @@
       <label for="isBringingGuest">Are you bringing a guest?  </label>
     </div>
 
-    <div *ngIf="this.eventSignUp.isBringingGuest" class="container">
+    <div *ngIf=this.eventSignUp.isBringingGuest class="container">
       <label for="guestName">What is your guest's name?&emsp;</label>
       <input id="guestName" name="guestName" formControlName="guestName" placeholder="Guest Name" type="text"
              [(ngModel)]="eventSignUp.guestName">
+      <br>
+      <span *ngIf=guestNameEmpty>The name is required.</span>
     </div>
 
     <button type="submit" class="button" [disabled]="!signUpForm.valid">Submit</button>

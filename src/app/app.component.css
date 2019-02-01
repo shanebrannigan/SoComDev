@@ -26,3 +26,9 @@ html {
 }
 
 
+
+.mainDiff{
+  width:100%;
+  height:fit-content;
+  background:yellow;
+}

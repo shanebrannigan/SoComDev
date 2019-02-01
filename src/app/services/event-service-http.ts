@@ -46,5 +46,3 @@ export class EventServiceHttp extends EventService {
     this.userDetails = eventSignUp;
   }
 }
-
-

@@ -37,4 +37,21 @@ export class AppComponent {
     this.isAdmin = input;
   }
 
+  iWantToGoMethod(input: boolean) {
+    console.log('In here');
+    if (input) {
+      this.iWantToGo = true;
+    }
+  }
+
+  cancelSignUpForm(input: boolean) {
+    if (input) {
+      this.iWantToGo = false;
+    }
+  }
+
+  getEventSignUp(input: EventSignUp) {
+
+  }
+
 }

@@ -15,6 +15,8 @@ export class HomeEventDisplayComponent implements OnInit {
   @Input() uname: string;
   @Output () displayAllEvents = new EventEmitter<boolean>();
   @Input() eventSignUp: EventSignUp;
+  @Output() showEventSignUpForm = new EventEmitter<boolean>();
+  @Output() showSignUp = false;
 
   eventToDisplay: Event;
 
@@ -23,11 +25,19 @@ export class HomeEventDisplayComponent implements OnInit {
 
   ngOnInit() {
     // get the events, display them
+    // TODO: this needs to be a reactive stream update - so that when admin edits it it updates...
     this.eventToDisplay = this.eventService.getEvent();
     console.log(this.uname);
   }
 
   showPreviousEvents() {
     this.displayAllEvents.emit(true);
+  }
+
+  onClickIWantToGo() {
+    console.log('show events!');
+    this.showSignUp = true;
+    console.log(this.showSignUp);
+    this.showEventSignUpForm.emit(this.showSignUp);
   }
 }

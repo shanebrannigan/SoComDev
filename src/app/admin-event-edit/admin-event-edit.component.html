@@ -1,4 +1,5 @@
 <form [formGroup]="eventEditForm" (ngSubmit)="updateEvent()">
+ <span *ngIf="(!eventEdited==true)">
   <fieldset>
     <label>Event Title:</label>
     <input type="text" formControlName="title">
@@ -18,4 +19,8 @@
   <fieldset>
     <input type="submit" [disabled]="!eventEditForm.valid" value="Update Event"/>
   </fieldset>
+ </span>
+  <span *ngIf="(eventEdited==true)">
+    Event edited!
+  </span>
 </form>

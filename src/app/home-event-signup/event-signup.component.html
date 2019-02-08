@@ -1,45 +1,43 @@
-<br><br>
-<div *ngIf = !this.eventSignUp.confirmation>
+<br>
+<div *ngIf="!this.eventSignUp.confirmation && !this.showSignUp">
+  <button class="button" (click)="clickIWantToGo()">I want to go</button>
+</div>
+
+<div *ngIf=this.showSignUp>
   <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
-    <table align = 'center'>
-      <span class="fa fa-times-circle" (click)="clearSelected()"></span>
-      <tr>
-        <td>Do you wish to attend the event?</td>
-        <td>
-          <input type="checkbox" formControlName="isGoingToEvent" [(ngModel)]="eventSignUp.isGoingToEvent">
-        </td>
-      </tr>
 
-      <tr>
-        <td>Are you a member of the Social Club?</td>
-        <td>
-          <input type="checkbox" formControlName="isMember" [(ngModel)]="eventSignUp.isMember">
-        </td>
-      </tr>
+    <span class="fa fa-times-circle" (click)="clearSelected()"></span>
+    <div>
+      <label for="isGoingToEvent">Do you wish to attend the event?</label>
+      <input type="checkbox" id="isGoingToEvent" formControlName="isGoingToEvent"
+             (click)="showGoingForm()"
+             [(ngModel)]="eventSignUp.isGoingToEvent">
+    </div>
 
-      <tr>
-        <td>Are you bringing a guest?</td>
-        <td>
-          <input type="checkbox" formControlName="isBringingGuest" [(ngModel)]="eventSignUp.isBringingGuest" >
-        </td>
-      </tr>
+    <div *ngIf=this.showAddQuestions>
+      <label for="isMember">Are you a member of the Social Club?</label>
+      <input type="checkbox" id="isMember" formControlName="isMember" [(ngModel)]="eventSignUp.isMember">
+    </div>
 
-      <div *ngIf = "eventSignUp.isBringingGuest">
-        <tr>
-          <td>What is your guest's name?</td>
-          <td>
-            <input formControlName="guestName" [(ngModel)]="eventSignUp.guestName">
-          </td>
-        </tr>
-      </div>
+    <div *ngIf=this.showAddQuestions>
+      <label for="isBringingGuest">Are you bringing a guest?</label>
+      <input type="checkbox" id="isBringingGuest" formControlName="isBringingGuest"
+             [(ngModel)]="eventSignUp.isBringingGuest">
+    </div>
 
-      <button type="submit"[disabled]="!signUpForm.valid">Submit</button>
-    </table>
+    <div *ngIf="this.eventSignUp.isBringingGuest">
+      <label for="guestName">What is your guest's name?</label>
+      <input id="guestName" formControlName="guestName" placeholder="Guest Name" [(ngModel)]="eventSignUp.guestName">
+    </div>
+
+    <button type="submit" [disabled]="!signUpForm.valid">Submit</button>
+
   </form>
 </div>
 
-<div *ngIf = this.eventSignUp.confirmation>
+<div *ngIf=this.eventSignUp.confirmation>
   <p>You are going to {{eventToDisplay.title}}</p>
+  <button *ngIf=!this.showSignUp class="button" (click)="clickIWantToGo()">Edit response</button>
 </div>
 
 

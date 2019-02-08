@@ -11,9 +11,7 @@ export class AppComponent {
   loggedIn: boolean;
   displayEvents: boolean;
   username = '';
-  isAdmin: boolean;
-  iWantToGo: boolean;
-  loginSuccessful: boolean;
+  isAdmin: boolean
 
   login(input: boolean) {
     if (input) {
@@ -39,22 +37,4 @@ export class AppComponent {
   checkAdmin(input: boolean) {
     this.isAdmin = input;
   }
-
-  iWantToGoMethod(input: boolean) {
-    console.log('In here');
-    if (input) {
-      this.iWantToGo = true;
-    }
-  }
-
-  cancelSignUpForm(input: boolean) {
-    if (input) {
-      this.iWantToGo = false;
-    }
-  }
-
-  getEventSignUp(input: EventSignUp) {
-
-  }
-
 }

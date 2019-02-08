@@ -12,6 +12,7 @@ export class AppComponent {
   displayEvents: boolean;
   username = '';
   isAdmin: boolean;
+  iWantToGo: boolean;
 
   login(input: boolean) {
     if (input) {

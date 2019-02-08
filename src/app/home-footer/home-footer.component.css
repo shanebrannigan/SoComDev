@@ -14,11 +14,20 @@
   -o-transition-duration: 0.5s;
 }
 
+.button {
+  background-color: #eab407;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
 
 .adminSettings{
   width:100%;
   height:90%;
-  background:darkorange;
 }
 /*
     Multicoloured Hover Variations

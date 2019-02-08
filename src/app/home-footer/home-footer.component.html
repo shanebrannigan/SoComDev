@@ -8,17 +8,17 @@
 
   <button
     [style.color]="displaySettings ? 'red':'black'"
-    type="button"(click)=unlockAdmin() >Admin Settings</button>
+    type="button"class ="button"  (click)=unlockAdmin() >Admin Settings</button>
   <div *ngIf = "displaySettings">
     <button
       [style.color]="createEvent ? 'red':'black'"
-      type="button"(click)=showCreateEvent() >Create Event</button>
+      type="button"class ="button"(click)=showCreateEvent() >Create Event</button>
     <button
       [style.color]="editEvent ? 'red':'black'"
-      type="button"(click)=showEditCurrentEvent() >Edit Current Event</button>
+      type="button" class ="button"(click)=showEditCurrentEvent() >Edit Current Event</button>
     <button
       [style.color]="eventAttendance ? 'red':'black'"
-      type="button"(click)=showExportEventAttendance() >Export Event Attendance</button>
+      type="button"class ="button"(click)=showExportEventAttendance() >Export Event Attendance</button>
     <div *ngIf = "createEvent">
     <app-admin-event-create></app-admin-event-create>
     </div>
